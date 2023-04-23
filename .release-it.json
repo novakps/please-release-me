@@ -1,9 +1,13 @@
 {
   "git": {
-      "requireBranch": "main"
+      "requireBranch": ["main", "foo"]
   },
   "github": {
     "release": true
+  },
+  "hooks": {
+      "before:init": ["git pull", "npm run lint", "npm run test"],
+      "after:bump": "npx auto-changelog -p"
   },
   "npm": {
       "publish": false
