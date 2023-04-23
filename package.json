@@ -1,6 +1,6 @@
 {
   "name": "please-release-me",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "testing release-it and github actions",
   "main": "index.js",
   "scripts": {
