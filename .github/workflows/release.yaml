@@ -1,0 +1,13 @@
+name: Release
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.94
+    steps:
+      - name: Check source
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npx yarn install --immutable --immutable-cache --check-cache
+      - name: Done message
+        run: echo "Done!"
