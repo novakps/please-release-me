@@ -1,0 +1,23 @@
+{
+  "name": "please-release-me",
+  "version": "1.0.1",
+  "description": "testing release-it and github actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novakps/please-release-me.git"
+  },
+  "author": "Paul Novak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/novakps/please-release-me/issues"
+  },
+  "homepage": "https://github.com/novakps/please-release-me#readme",
+  "devDependencies": {
+    "release-it": "^15.10.1"
+  }
+}
