@@ -4,6 +4,7 @@
   "description": "testing release-it and github actions",
   "main": "index.js",
   "scripts": {
+    "lint": "echo your lint command and output here",
     "test": "npm test",
     "release": "release-it"
   },
