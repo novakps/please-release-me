@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "echo your lint command and output here",
-    "test": "npm test",
+    "test": "echo your test command and output here",
     "release": "release-it"
   },
   "repository": {
