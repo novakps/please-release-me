@@ -3,7 +3,7 @@ on: [workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-20.94
+    runs-on: ubuntu-20.04
     steps:
       - name: Check source
         uses: actions/checkout@v2
