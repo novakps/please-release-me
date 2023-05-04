@@ -28,6 +28,12 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npx yarn install --immutable --immutable-cache --check-cache
-      - run: npm publish
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - run: npx yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
