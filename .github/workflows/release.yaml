@@ -1,13 +1,33 @@
-name: Release
-on: [workflow_dispatch]
+name: Package
+
+on:
+  release:
+    types: [created]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Check source
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npx yarn install --immutable --immutable-cache --check-cache
-      - name: Done message
-        run: echo "Done!"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npx yarn install --immutable --immutable-cache --check-cache
+      - run: npm run test
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npx yarn install --immutable --immutable-cache --check-cache
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
