@@ -3,6 +3,9 @@
   "version": "2.0.0-0",
   "description": "testing release-it and github actions",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "lint": "echo your lint command and output here",
     "test": "echo your test command and output here",
