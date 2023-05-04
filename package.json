@@ -1,6 +1,6 @@
 {
   "name": "@novakps/please-release-me",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "testing release-it and github actions",
   "main": "index.js",
   "publishConfig": {
@@ -11,7 +11,7 @@
     "test": "echo your test command and output here",
     "release": "release-it"
   },
-  "repository":"https://github.com/novakps/please-release-me",
+  "repository": "https://github.com/novakps/please-release-me",
   "author": "Paul Novak",
   "license": "MIT",
   "bugs": {
