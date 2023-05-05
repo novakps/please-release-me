@@ -11,7 +11,7 @@
     "test": "echo your test command and output here",
     "release": "release-it"
   },
-  "repository": "https://github.com/novakps/please-release-me",
+  "repository": "https://github.com/novakps/please-release-me.git",
   "author": "Paul Novak",
   "license": "MIT",
   "bugs": {
