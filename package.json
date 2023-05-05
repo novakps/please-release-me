@@ -1,6 +1,6 @@
 {
   "name": "@novakps/please-release-me",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "testing release-it and github actions",
   "main": "index.js",
   "publishConfig": {
