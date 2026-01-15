@@ -1,10 +1,10 @@
 name: Rename dependabot branch
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out rename Action 🚀
 on:
   pull_request:
     types: [opened]
     branches:
-      - dependabot/*
+      - main
 jobs:
   Rename-Dependabot-Branch:
     runs-on: ubuntu-latest
