@@ -12,5 +12,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPOSITORY: ${{ github.repository }}
-      - run: echo "Renaming branch from $GITHUB_REF_NAME to $DEPENDABOT=$GITHUB_SHA"
+      - run: echo "Renaming branch from $GITHUB_REF_NAME to DEPENDABOT-$GITHUB_SHA"
       - run: gh api repos/novakps/$GH_REPOSITORY/branches/$GITHUB_REF_NAME/rename -F new_name=DEPENDABOT-$GITHUB_SHA
