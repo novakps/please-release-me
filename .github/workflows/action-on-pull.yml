@@ -1,0 +1,8 @@
+name: Action on Pull Request
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "This runs only when a pull request is opened, synchronized, or reopened."
