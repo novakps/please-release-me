@@ -5,4 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "This runs only when a pull request is opened, synchronized, or reopened."
+      - name: PR 
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: echo "This runs only when a pull request is opened, synchronized, or reopened."
