@@ -3,6 +3,8 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - 'master' 
 
 permissions:
   contents: write
@@ -14,7 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         env:
+          BRANCH_NAME: ${{ github.head_ref }}
+          GITHUB_SHA: ${{ github.sha }}
+          NEW_BRANCH_NAME: DEPENDABOT-$GITHUB_SHA
           GH_TOKEN: ${{ github.token }}
           GH_REPOSITORY: ${{ github.repository }}
-      - run: echo Renaming branch from $GITHUB_REF_NAME to DEPENDABOT-$GITHUB_SHA
-      - run: gh api repos/novakps/$GH_REPOSITORY/branches/$GITHUB_REF_NAME/rename -F new_name=DEPENDABOT-$GITHUB_SHA
+      - run: echo Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME
+      - run: gh api repos/novakps/$GH_REPOSITORY/branches/$BRANCH_NAME/rename -F new_name=$NEW_BRANCH_NAME
