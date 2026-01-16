@@ -3,6 +3,10 @@ on:
   pull_request:
     types:
       - opened
+
+permissions:
+  contents: write
+  
 jobs:
   run_if:
     if: startsWith(github.head_ref, 'dependabot/')
