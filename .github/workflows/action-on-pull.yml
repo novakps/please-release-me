@@ -15,7 +15,7 @@ permissions:
   
 jobs:
   run_if:
-    if: startsWith(BRANCH_NAME, 'dependabot/')
+    if: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
