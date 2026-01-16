@@ -20,5 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME"
-      - run: echo $(gh api repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename -F new_name=$NEW_BRANCH_NAME)
       - run: $(gh api repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename -F new_name=$NEW_BRANCH_NAME)
