@@ -1,4 +1,4 @@
-name: Action on Pull Request
+name: Action on open dependabot Pull Request
 on:
   pull_request:
     types:
@@ -10,14 +10,19 @@ env:
   NEW_BRANCH_NAME: DEPENDABOT_${{ github.sha }}
   GH_TOKEN: ${{ github.token }}
   GH_REPOSITORY: ${{ github.repository }}
+  PR_NUMBER: ${{ github.event.number }}
+  
 permissions:
   contents: write
+  pull-requests: write
   
 jobs:
   run_if:
-    if: true
+    if: startsWith(github.head_ref, 'dependabot/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: echo "closing PR $PR_NUMBER"
+      - run: gh pr close "$PR_NUMBER" --comment "Closing via GitHub Action"
       - run: echo "Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME"
       - run: $(gh api repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename -F new_name=$NEW_BRANCH_NAME)
