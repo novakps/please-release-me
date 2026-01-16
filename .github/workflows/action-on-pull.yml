@@ -4,11 +4,11 @@ on:
     types:
       - opened
     branches:
-      - 'main' 
+      - main 
 env:
   BRANCH_NAME: ${{ github.head_ref }}
   GITHUB_SHA: ${{ github.sha }}
-  NEW_BRANCH_NAME: join(['DEPENDABOT','-', $GITHUB_SHA])
+  NEW_BRANCH_NAME: DEPENDABOT-$GITHUB_SHA
   GH_TOKEN: ${{ github.token }}
   GH_REPOSITORY: ${{ github.repository }}
 permissions:
