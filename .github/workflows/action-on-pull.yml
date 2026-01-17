@@ -11,7 +11,7 @@ env:
   GH_TOKEN: ${{ github.token }}
   GH_REPOSITORY: ${{ github.repository }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
-  PR_TITLE: ${{ github.event.pull_request.title }}
+  PR_BASE: ${{ github.event.pull_request.base.ref }}
   
 permissions:
   contents: write
@@ -23,9 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME"
-      - run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
-      - run: echo "Creating new PR from $PR_NUMBER for renamed branch"
-      - run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_BASE" --body "$PR_TITLE"
+      - name: Rename base branch so it will work in our build system
+        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
+      - name: Copy Title from original PR
+        run: echo "PR_TITLE=A dummy title" >> $GITHUB_ENV
+      - name: Copy Body from original PR
+        run: echo "PR_BODY=A dummy body" >> $GITHUB_ENV
+      - name:  Create new PR with renamed base branch
+        run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
 
       
