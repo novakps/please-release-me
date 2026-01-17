@@ -11,6 +11,9 @@ env:
   GH_TOKEN: ${{ github.token }}
   GH_REPOSITORY: ${{ github.repository }}
   PR_NUMBER: ${{ github.event.number }}
+  PR_TITLE: ${{ github.event.pull_request.title }}
+  PR_BODY: ${{ github.event.pull_request.body }}
+  PR_BASE: ${{ github.event.pull_request.base }}
   
 permissions:
   contents: write
@@ -24,6 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: echo "Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME"
       - run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
-      - run: echo "closing PR $PR_NUMBER"
-      - run: gh pr close "$PR_NUMBER" --comment "Closing via GitHub Action for renaming"
+      - run: echo "Creating new PR from $PR_NUMBER for renamed branch"
+      - run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_BASE" --body "$PR_TITLE"
+
       
