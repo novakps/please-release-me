@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "closing PR $PR_NUMBER"
-      - run: gh pr close "$PR_NUMBER" --comment "Closing via GitHub Action for renaming"
       - run: echo "Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME"
       - run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
+      - run: echo "closing PR $PR_NUMBER"
+      - run: gh pr close "$PR_NUMBER" --comment "Closing via GitHub Action for renaming"
       
