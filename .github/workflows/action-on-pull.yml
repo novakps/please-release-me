@@ -25,5 +25,5 @@ jobs:
       - run: echo "closing PR $PR_NUMBER"
       - run: gh pr close "$PR_NUMBER" --comment "Closing via GitHub Action for renaming"
       - run: echo "Renaming branch from $BRANCH_NAME to $NEW_BRANCH_NAME"
-      - run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename -f new_name=$NEW_BRANCH_NAME"
+      - run: gh api repos/novakps/please-release-me/branches/dependabotfoo46/rename -f new_name=foo46
 
