@@ -10,7 +10,8 @@ env:
   NEW_BRANCH_NAME: DEPS${{ github.sha }}
   GH_TOKEN: ${{ github.token }}
   GH_REPOSITORY: ${{ github.repository }}
-  PR_NUMBER: ${{ github.event.number }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  PR_TITLE: ${{ github.event.pull_request.title }}
   
 permissions:
   contents: write
