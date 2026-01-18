@@ -1,4 +1,4 @@
-name: Action on open dependabot Pull Request
+name: Auto-approve dependabot Pull Requests
 on:
   pull_request:
     types:
@@ -34,5 +34,7 @@ jobs:
         run: echo "PR_BODY=A dummy body" >> $GITHUB_ENV
       - name:  Create new PR with renamed base branch
         run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
+      - name: approve dependabot PR
+        run: gh pr review "$PR_NUMBER" --approve 
 
       
