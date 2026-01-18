@@ -31,8 +31,8 @@ jobs:
         run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
       - name: approve dependabot PR
         run: gh pr review "$PR_NUMBER" --approve 
-      - name: set auto-merge
-        run: gh pr merge "$PR_URL" --auto --delete-branch
+      - name: set auto-merge with squash since no merge queue here
+        run: gh pr merge "$PR_URL" --auto --delete-branch --squash
 
 
       
