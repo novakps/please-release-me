@@ -22,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Get commit short sha
-        run: SHORT_SHA=$(git rev-parse --short ${{ github.sha }}) >> $GITHUB_ENV
+      - name: Build new branch name from commit sha
+        run: NEW_BRANCH_NAME=DEPENDABOT-$(git rev-parse --short ${{ github.sha }}) >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
-        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=DEPENDABOT_$SHORT_SHA"
+        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
       - name: Copy Title from original PR
         run: echo "PR_TITLE=A dummy title" >> $GITHUB_ENV
       - name: Copy Body from original PR
