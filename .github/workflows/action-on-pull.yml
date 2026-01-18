@@ -35,7 +35,7 @@ jobs:
       - name:  Create new PR with renamed base branch
         run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
       - name: set auto-merge
-        run: gh pr merge "$PR_NUMBER" --auto --delete-branch
+        run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash 
       - name: approve dependabot PR
         run: gh pr review "$PR_NUMBER" --approve 
 
