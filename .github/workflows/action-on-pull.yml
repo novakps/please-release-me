@@ -7,7 +7,6 @@ on:
       - main 
 env:
   BRANCH_NAME: ${{ github.head_ref }}
-  NEW_BRANCH_NAME: DEPS${{ github.sha }}
   GH_TOKEN: ${{ github.token }}
   GH_REPOSITORY: ${{ github.repository }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -19,12 +18,14 @@ permissions:
   
 jobs:
   run_if:
-    if: startsWith(github.head_ref, 'dependabot_')
+    if:  github.actor == 'dependabot[bot]' || github.actor == 'novakps'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Get commit short sha
+        run: SHORT_SHA=$(git rev-parse --short ${{ github.sha }}) >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
-        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
+        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=DEPENDABOT_$SHORT_SHA"
       - name: Copy Title from original PR
         run: echo "PR_TITLE=A dummy title" >> $GITHUB_ENV
       - name: Copy Body from original PR
