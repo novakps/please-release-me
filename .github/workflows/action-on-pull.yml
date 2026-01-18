@@ -28,15 +28,10 @@ jobs:
           echo "NEW_BRANCH_NAME=DEPENDABOT_$calculatedSha" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
         run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
-      - name: Copy Title from original PR
-        run: echo "PR_TITLE=A dummy title" >> $GITHUB_ENV
-      - name: Copy Body from original PR
-        run: echo "PR_BODY=A dummy body" >> $GITHUB_ENV
-      - name:  Create new PR with renamed base branch
-        run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
-      - name: set auto-merge
-        run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash 
       - name: approve dependabot PR
         run: gh pr review "$PR_NUMBER" --approve 
+      - name: set auto-merge
+        run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash 
+
 
       
