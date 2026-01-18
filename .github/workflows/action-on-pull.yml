@@ -32,7 +32,7 @@ jobs:
       - name: approve dependabot PR
         run: gh pr review "$PR_NUMBER" --approve 
       - name: set auto-merge with squash since no merge queue here
-        run: gh pr merge "$PR_URL" --auto --delete-branch --squash
+        run: gh pr merge  --auto --delete-branch --squash "$PR_URL"
 
 
       
