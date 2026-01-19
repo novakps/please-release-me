@@ -22,17 +22,19 @@ jobs:
     if:  github.actor == 'dependabot[bot]' || github.actor == 'novakps'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: approve dependabot PR
-        run: gh pr review "$PR_NUMBER" --approve   
+      - uses: actions/checkout@v4  
       - name: Calculate new branch name from short git commit SHA
         run: |  
           calculatedSha=$(git rev-parse --short ${{ github.sha }})
           echo "NEW_BRANCH_NAME=DEPENDABOT_$calculatedSha" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
         run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" -f "new_name=$NEW_BRANCH_NAME"
+      - name: update PR branch
+        run:  gh api "repos/$GH_REPOSITORY/branches/$PR_NUMBER/update-branch
       - name: set auto-merge with squash since no merge queue here
-        run: gh pr merge  --auto --delete-branch --squash "$PR_URL"        
+        run: gh pr merge  --auto --delete-branch --squash "$PR_URL"  
+      - name: approve dependabot PR
+        run: gh pr review "$PR_NUMBER" --approve       
 
 
       
