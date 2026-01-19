@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: set auto-merge with squash since no merge queue here
-        run: gh pr merge  --auto --delete-branch --squash "$PR_NUMBER"
+        run: gh pr merge  --auto --delete-branch --squash "$PR_URL"
       - name: approve dependabot PR
         run: gh pr review "$PR_NUMBER" --approve   
       - uses: actions/checkout@v4
