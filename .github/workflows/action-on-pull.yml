@@ -34,7 +34,7 @@ jobs:
       - name: Rename base branch so it will work in our build system
         run: gh api "repos/$GH_REPOSITORY/git/refs" --method POST -f ref="refs/heads/$NEW_BRANCH_NAME" -f sha="${{ github.sha }}"
       - name: create new PR from renamed branch
-        run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY" --json number
+        run: gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
       - name: approve new PR
         run: gh pr review --approve       
 
