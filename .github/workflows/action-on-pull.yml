@@ -40,5 +40,5 @@ jobs:
       - name: approve new PR
         run: gh pr review "$NEW_PR_URL" --approve       
         env:
-          GITHUB_TOKEN: ${{ secrets.PR_PAT }}
+          GH_TOKEN: ${{ secrets.PR_PAT }}
       
