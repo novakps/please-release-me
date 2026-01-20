@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
-      - name: close PR
+      - name: close PR since we replacing it
         run: gh pr close "$PR_NUMBER"
       - name: Calculate new branch name from short git commit SHA
         run: |  
@@ -41,6 +41,6 @@ jobs:
         run: gh pr review "$NEW_PR_URL" --approve       
         env:
           GH_TOKEN: ${{ secrets.PR_PAT }}
-      - name: set auto-merge
+      - name: set auto-merge on new PR
         run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash
       
