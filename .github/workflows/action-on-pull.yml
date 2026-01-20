@@ -37,6 +37,8 @@ jobs:
         run: |
           newPRURL=$(gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY")
           echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
+      - name: comment on old PR linking to new PR
+        run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
       - name: approve new PR with PAT since you cannot approve your own PRs
         run: gh pr review "$NEW_PR_URL" --approve       
         env:
