@@ -21,7 +21,7 @@ permissions:
   
 jobs:
   run_if:
-    if:  github.actor == 'dependabot[bot]' || github.actor == 'novakps'
+    if:  github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
@@ -41,6 +41,6 @@ jobs:
         run: gh pr review "$NEW_PR_URL" --approve       
         env:
           GH_TOKEN: ${{ secrets.PR_PAT }}
-      - name: set auto-merge on new PR
-        run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash
+      - name: set auto-merge on new PR so it goes to merge queue after passing all checks
+        run: gh pr merge "$PR_NUMBER" --auto --delete-branch
       
