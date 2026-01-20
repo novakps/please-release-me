@@ -39,6 +39,6 @@ jobs:
           echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
       - name: approve new PR
         run: gh pr review "$NEW_PR_URL" --approve       
-
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.PR_PAT }}
       
