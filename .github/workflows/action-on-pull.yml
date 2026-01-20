@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
-      - name: close PR since we replacing it
-        run: gh pr close "$PR_NUMBER"
+      - name: close original dependabot PR since we are replacing it
+        run: gh pr close "$PR_URL"
       - name: Calculate new branch name from short git commit SHA
         run: |  
           calculatedSha=$(git rev-parse --short ${{ github.sha }})
@@ -37,7 +37,7 @@ jobs:
         run: |
           newPRURL=$(gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY")
           echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
-      - name: approve new PR
+      - name: approve new PR with PAT since you cannot approve your own PRs
         run: gh pr review "$NEW_PR_URL" --approve       
         env:
           GH_TOKEN: ${{ secrets.PR_PAT }}
