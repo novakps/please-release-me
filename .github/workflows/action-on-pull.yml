@@ -44,5 +44,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PR_PAT }}
       - name: set auto-merge on new PR so it goes to merge queue after passing all checks
-        run: gh pr merge "$PR_NUMBER" --auto --delete-branch
+        run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash
       
