@@ -773,6 +773,11 @@ lodash@^4.15.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
+lodash@^4.17.1:
+  version "4.17.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.1.tgz#e75eaf17a34730c6491d9956f4d81f3a044f01bf"
+  integrity sha512-TU8moLfqGOx1RJogO9uU2d90q0L5J/1g/i4fkdB5ZmQ5qsjwVnCvg5XWuiwqqPNnyBQlQp8ukd9ADTY27dGsiQ==
+
 log-symbols@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-6.0.0.tgz#bb95e5f05322651cac30c0feb6404f9f2a8a9439"

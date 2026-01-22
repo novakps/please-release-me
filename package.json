@@ -20,5 +20,8 @@
   "homepage": "https://github.com/novakps/please-release-me#readme",
   "devDependencies": {
     "release-it": "19.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.1"
   }
 }
