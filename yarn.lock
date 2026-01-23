@@ -389,10 +389,10 @@ citty@^0.2.0:
   resolved "https://registry.yarnpkg.com/citty/-/citty-0.2.0.tgz#2426b145c4bf2a2c5c33bd66a634dfe3d5ea67ea"
   integrity sha512-8csy5IBFI2ex2hTVpaHN2j+LNE199AgiI7y4dMintrr8i0lQiFn+0AWMZrWdHKIgMOer65f8IThysYhoReqjWA==
 
-classnames@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.0.0.tgz#3e6c9d5231c224e792e579a1831d745dcf92ea29"
-  integrity sha512-lDrU5cmZBhF4IbwSAL6ZIdmfVBxBRY46xsXkQv/JnNC7b406AuZ0qSODuTZD/IOPmM3EqzBKs/LuYjjc0vn2uw==
+classnames@2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 cli-cursor@^5.0.0:
   version "5.0.0"
