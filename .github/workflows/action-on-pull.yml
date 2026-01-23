@@ -33,16 +33,16 @@ jobs:
           echo "NEW_BRANCH_NAME=DEPENDABOT_$calculatedSha" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
         run: gh api "repos/$GH_REPOSITORY/git/refs" --method POST -f ref="refs/heads/$NEW_BRANCH_NAME" -f sha="${{ github.sha }}"
-      - name: create new PR from renamed branch
+      - name: create new PR from renamed branch use PAT so it can be approved below
         run: |
           newPRURL=$(gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY")
           echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
-      - name: comment on old PR linking to new PR
-        run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
-      - name: approve new PR with PAT since you cannot approve your own PRs
-        run: gh pr review "$NEW_PR_URL" --approve       
         env:
           GH_TOKEN: ${{ secrets.PR_PAT }}
+      - name: comment on old PR linking to new PR
+        run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
+      - name: approve new PR
+        run: gh pr review "$NEW_PR_URL" --approve       
       - name: set auto-merge on new PR so it goes to merge queue after passing all checks
         run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash
       
