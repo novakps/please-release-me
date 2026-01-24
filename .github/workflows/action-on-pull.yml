@@ -39,6 +39,6 @@ jobs:
           echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
       - name: comment on old PR linking to new PR
         run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
-      - name: set auto-merge on new PR so it goes to merge queue after passing all checks
-        run: gh pr merge "$PR_NUMBER" --auto --delete-branch --squash
+      - name: set auto-merge on new PR so it goes to merge queue after passing all checks (TODO: remove squash)
+        run: gh pr merge "$NEW_PR_URL" --auto --delete-branch --squash
       
