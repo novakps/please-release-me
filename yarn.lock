@@ -1136,10 +1136,10 @@ signal-exit@^4.1.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-4.1.0.tgz#952188c1cbd546070e2dd20d0f41c0ae0530cb04"
   integrity sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==
 
-smallest@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/smallest/-/smallest-1.0.0.tgz#d97df7a782d21651b7558400ca1bd10a59efafab"
-  integrity sha512-oZdjIVeMd3WygoeVluLxRGKMyacTiD8DwqAS8kINJE+T8ZLZgSp7xXVLZcRXJhEkA0ws3ItJ69GKCOI7z/ccIg==
+smallest@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/smallest/-/smallest-1.0.1.tgz#59ddee13546911b2177f36af61a866bf3b3bfb81"
+  integrity sha512-iZqKflwrMMfQfMpu4wvHZJ1D4SODLtBjW9K3FSMMFg6nmh4Ksuo2NRWclVRi7INGbsH87EvuuiLtcM/0a1sikw==
   dependencies:
     to-array "~0.1.4"
 
