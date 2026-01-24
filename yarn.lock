@@ -1136,6 +1136,13 @@ signal-exit@^4.1.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-4.1.0.tgz#952188c1cbd546070e2dd20d0f41c0ae0530cb04"
   integrity sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==
 
+smallest@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/smallest/-/smallest-1.0.0.tgz#d97df7a782d21651b7558400ca1bd10a59efafab"
+  integrity sha512-oZdjIVeMd3WygoeVluLxRGKMyacTiD8DwqAS8kINJE+T8ZLZgSp7xXVLZcRXJhEkA0ws3ItJ69GKCOI7z/ccIg==
+  dependencies:
+    to-array "~0.1.4"
+
 smart-buffer@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
@@ -1222,6 +1229,11 @@ tinyglobby@0.2.12:
   dependencies:
     fdir "^6.4.3"
     picomatch "^4.0.2"
+
+to-array@~0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/to-array/-/to-array-0.1.4.tgz#17e6c11f73dd4f3d74cda7a4ff3238e9ad9bf890"
+  integrity sha512-LhVdShQD/4Mk4zXNroIQZJC+Ap3zgLcDuwEdcmLv9CCO73NWockQDwyUnW/m8VX/EElfL6FcYx7EeutN4HJA6A==
 
 tslib@^2.0.1, tslib@^2.1.0:
   version "2.5.0"
