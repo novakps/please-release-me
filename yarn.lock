@@ -1212,10 +1212,10 @@ strip-final-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/strip-final-newline/-/strip-final-newline-3.0.0.tgz#52894c313fbff318835280aed60ff71ebf12b8fd"
   integrity sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==
 
-tiny@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/tiny/-/tiny-0.0.9.tgz#29df6d6f3bf567ce3e33d8728612b90155e47b15"
-  integrity sha512-mEkX6/mkA6kube/DMxEO62jaZwJeHTeLFqhhuYcqdYxjfLYZ8yFCdFgqWtjzsoYA5zsUv//7/LzIeM8plT2YzA==
+tiny@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/tiny/-/tiny-0.0.4.tgz#58ee0feecf751634b512994c7a931eaf9664ce5e"
+  integrity sha512-OwD3AiUboqlbUmv1+WuaeWk7EPUzA5U0N3Ief0t5NGJl0B3BlYvHAnJZRTuHWl4eWEd50C67wJs7f0ajpydlrA==
 
 tinyexec@1.0.1:
   version "1.0.1"
