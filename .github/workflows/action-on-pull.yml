@@ -26,14 +26,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
+      - name: get head sha of PR branch
+        run: |
+          branchSha=$(gh pr view "$PR_NUMBER" --json headRefOid --jq '.headRefOid')
+          echo "BRANCH_SHA=branchSha" >> $GITHUB_ENV
+          echo "NEW_BRANCH_NAME=DEPENDABOT-$branchSha" >> $GITHUB_ENV
       # - name: close original dependabot PR since we are replacing it
       #   run: gh pr close "$PR_URL"
-      - name: Calculate new branch name from short git commit SHA
-        run: |  
-          calculatedSha=$(git rev-parse --short ${{ github.sha }})
-          echo "NEW_BRANCH_NAME=DEPENDABOT_$calculatedSha" >> $GITHUB_ENV
+      # - name: Calculate new branch name from short git commit SHA
+      #   run: |  
+      #     calculatedSha=$(git rev-parse --short ${{ github.sha }})
+      #     echo "NEW_BRANCH_NAME=DEPENDABOT_$calculatedSha" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
-        run: gh api "repos/$GH_REPOSITORY/git/refs" --method POST -f ref="refs/heads/$NEW_BRANCH_NAME" -f sha="${{ github.sha }}"
+        run: gh api "repos/$GH_REPOSITORY/git/refs" --method POST -f ref="refs/heads/$NEW_BRANCH_NAME" -f sha="$BRANCH_SHA"
       # - name: create new PR from renamed branch use PAT so it can be approved below
       #   run: |
       #     newPRURL=$(gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY")
