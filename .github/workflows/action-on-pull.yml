@@ -2,8 +2,7 @@ name: Auto-approve dependabot Pull Requests
 on:
   workflow_dispatch: # testing only
   pull_request:
-    types:
-      - opened
+    types: [opened, reopened]
     branches:
       - main 
 env:
