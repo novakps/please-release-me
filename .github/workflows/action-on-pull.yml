@@ -28,7 +28,7 @@ jobs:
       - name: get head sha of PR branch
         run: |
           branchSha=$(gh pr view "$PR_NUMBER" --json headRefOid --jq '.headRefOid')
-          echo "BRANCH_SHA=branchSha" >> $GITHUB_ENV
+          echo "BRANCH_SHA=$branchSha" >> $GITHUB_ENV
           echo "NEW_BRANCH_NAME=DEPENDABOT-$branchSha" >> $GITHUB_ENV
       # - name: close original dependabot PR since we are replacing it
       #   run: gh pr close "$PR_URL"
