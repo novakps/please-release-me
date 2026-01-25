@@ -21,7 +21,7 @@ permissions:
   
 jobs:
   run_if:
-    if:  github.actor == 'dependabot[bot]' || github.actor == 'novakps'
+    if:  github.actor == 'dependabot[bot]' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
@@ -37,7 +37,8 @@ jobs:
       #     calculatedSha=$(git rev-parse --short ${{ github.sha }})
       #     echo "NEW_BRANCH_NAME=DEPENDABOT_$calculatedSha" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
-        run: gh api "repos/$GH_REPOSITORY/git/refs" --method POST -f ref="refs/heads/$NEW_BRANCH_NAME" -f sha="$BRANCH_SHA"
+        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" --method POST -f 'new_name=$NEW_BRANCH_NAME"
+      #   run: gh api "repos/$GH_REPOSITORY/git/refs" --method POST -f ref="refs/heads/$NEW_BRANCH_NAME" -f sha="$BRANCH_SHA"
       # - name: create new PR from renamed branch use PAT so it can be approved below
       #   run: |
       #     newPRURL=$(gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY")
