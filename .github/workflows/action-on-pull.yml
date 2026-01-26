@@ -1,6 +1,5 @@
 name: Recreate dependabot Pull Request with renamed branch
 on:
-  workflow_dispatch: # testing only
   pull_request:
     types: [opened, reopened]
     branches:
