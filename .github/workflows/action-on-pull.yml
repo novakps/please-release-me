@@ -30,6 +30,12 @@ jobs:
           branchSha=$(gh pr view "$PR_NUMBER" --json headRefOid --jq '.headRefOid')
           echo "NEW_BRANCH_NAME=DEPENDABOT-"${branchSha:0:10}"" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
-        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" --method POST -f "new_name=$NEW_BRANCH_NAME"
+        run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" --method POST -f "new_name=$NEW_BRANCH_NAME"    
+      - name: create new PR from renamed branch
+        run: |
+          newPRURL=$(gh pr create -B "$PR_BASE" -H "$NEW_BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY")
+          echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
+      - name: comment on old PR linking to new PR
+        run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
 
       
