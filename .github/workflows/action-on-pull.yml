@@ -28,8 +28,7 @@ jobs:
       - name: generate new branch name from head sha of PR branch
         run: |
           branchSha=$(gh pr view "$PR_NUMBER" --json headRefOid --jq '.headRefOid')
-          echo "BRANCH_SHA=$branchSha" >> $GITHUB_ENV
-          echo "NEW_BRANCH_NAME=DEPENDABOT-$branchSha" >> $GITHUB_ENV
+          echo "NEW_BRANCH_NAME=DEPENDABOT-"${branchSha:0:10}"" >> $GITHUB_ENV
       - name: Rename base branch so it will work in our build system
         run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" --method POST -f "new_name=$NEW_BRANCH_NAME"
 
