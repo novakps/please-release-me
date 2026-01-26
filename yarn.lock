@@ -1229,10 +1229,10 @@ strip-final-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/strip-final-newline/-/strip-final-newline-3.0.0.tgz#52894c313fbff318835280aed60ff71ebf12b8fd"
   integrity sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==
 
-teensy@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/teensy/-/teensy-1.0.0.tgz#72ed6d26605ec0e1547a4244a83267ba811d2cfe"
-  integrity sha512-vYIpdmdjw3NzvgyQ0z4OsU0bew0ZxORXYGkpU9Qr+tCF0FxYzLjfdZLbPMZWBSIThJ7L7DG3SLOn0o7qnk32ZA==
+teensy@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/teensy/-/teensy-1.2.2.tgz#08fb09756e4d625da2c12ed1ffc013f3a99938df"
+  integrity sha512-+hXMXyyuoPRGfT17MReoYC4aRgk4TEondpcNIHOnJnIe4unJi4J+1+SPNKEHoRp4/ZTptL4sVQFaOylP6VuN1g==
 
 tiny@^0.0.10:
   version "0.0.10"
