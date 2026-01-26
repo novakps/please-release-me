@@ -1,4 +1,4 @@
-name: Auto-approve dependabot Pull Requests
+name: Recreate dependabot Pull Request with renamed branch
 on:
   workflow_dispatch: # testing only
   pull_request:
@@ -21,7 +21,7 @@ permissions:
   
 jobs:
   run_if:
-    if:  github.actor == 'dependabot[bot]'  || github.actor == 'novakps'
+    if:  github.actor == 'dependabot[bot]' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
@@ -29,7 +29,7 @@ jobs:
         run: |
           branchSha=$(gh pr view "$PR_NUMBER" --json headRefOid --jq '.headRefOid')
           echo "NEW_BRANCH_NAME=DEPENDABOT-"${branchSha:0:10}"" >> $GITHUB_ENV
-      - name: Rename base branch so it will work in our build system
+      - name: Rename base branch so it will work in our build system, should close original branch and PR
         run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" --method POST -f "new_name=$NEW_BRANCH_NAME"    
       - name: create new PR from renamed branch
         run: |
@@ -38,4 +38,3 @@ jobs:
       - name: comment on old PR linking to new PR
         run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
 
-      
