@@ -10,7 +10,7 @@ env:
   GH_REPOSITORY: ${{ github.repository }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
   PR_BASE: ${{ github.event.pull_request.base.ref }}
-  PR_URL: ${{github.event.pull_request.html_url}}
+  PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
   PR_TITLE: ${{ github.event.pull_request.title }}
   PR_BODY: ${{ github.event.pull_request.body }}
   
@@ -20,15 +20,13 @@ permissions:
   
 jobs:
   run_if:
-    if:  github.actor == 'dependabot[bot]' 
+    if:  github.actor == 'dependabot[bot]' || github.actor == 'novakps'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  
       - name: generate new branch name from head sha of PR branch
-        run: |
-          branchSha=$(gh pr view "$PR_NUMBER" --json headRefOid --jq '.headRefOid')
-          echo "NEW_BRANCH_NAME=DEPENDABOT-"${branchSha:0:10}"" >> $GITHUB_ENV
-      - name: Rename base branch so it will work in our build system, this should close original branch and PR
+        run: echo "NEW_BRANCH_NAME=DEPENDABOT-"${PR_HEAD_SHA:0:10}"" >> $GITHUB_ENV
+      - name: Rename head branch so it will work in our build system, this should close original branch and PR
         run: gh api "repos/$GH_REPOSITORY/branches/$BRANCH_NAME/rename" --method POST -f "new_name=$NEW_BRANCH_NAME"    
       - name: create new PR from renamed branch
         run: |
@@ -36,4 +34,6 @@ jobs:
           echo "NEW_PR_URL=$newPRURL" >> $GITHUB_ENV
       - name: comment on old PR linking to new PR
         run: gh pr comment "$PR_NUMBER" --body "Superceded by $NEW_PR_URL"
+      - name: close old PR
+        run: gh pr close "$PR_NUMBER"
 
